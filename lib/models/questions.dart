@@ -4,14 +4,14 @@ class Questions {
  final List<String>? options;
 
  Questions({this.id, this.answer, this.options, this.question});
-}
 
+}
 const List sample_data = [
   {
     "id": 1,
     "question":
-    "What are the five Oceans in the world?",
-    "options": ['Pacific Ocean, Atlantic Ocean, Indian Ocean, Southern Ocean, Arctic Ocean', 'Bar Beach', 'All of the Above',],
+    "Flutter is an open-source UI software development kit created by ______",
+    "options": ['Apple', 'Google', 'Facebook', 'Microsoft'],
     "answer_index": 1,
   },
   {
@@ -33,3 +33,4 @@ const List sample_data = [
     "answer_index": 2,
   },
 ];
+
