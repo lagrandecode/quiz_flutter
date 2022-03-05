@@ -15,7 +15,7 @@ class _QuestionBodyState extends State<QuestionBody> {
       height: 300,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-        color: Colors.grey.withOpacity(0.2),
+        color: Color(0xffaab8f5),
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(10),
           topRight: Radius.circular(10),
@@ -34,20 +34,7 @@ class _QuestionBodyState extends State<QuestionBody> {
                 fontSize: 15,
               ),
             ),
-            Container(
-              margin: EdgeInsets.only(top: 15),
-              padding: EdgeInsets.all(15),
-              width: MediaQuery.of(context).size.width,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(10),
-                    topLeft: Radius.circular(10),
-                    bottomRight: Radius.circular(10),
-                    bottomLeft: Radius.circular(0)),
-                color: Colors.yellow
-              ),
-              child: Text("options",style: TextStyle(fontSize: 15),),
-            ),
+
           ],
         ),
       ),
