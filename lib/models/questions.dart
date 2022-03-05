@@ -1,11 +1,11 @@
-class Questions {
- final int? id, answer;
- final String? question;
- final List<String>? options;
+class Question {
+  final int? id, answer;
+  final String? question;
+  final List<String>? options;
 
- Questions({this.id, this.answer, this.options, this.question});
-
+  Question({this.id, this.question, this.answer, this.options});
 }
+
 const List sample_data = [
   {
     "id": 1,
@@ -33,4 +33,3 @@ const List sample_data = [
     "answer_index": 2,
   },
 ];
-

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_flutter/components/question_body.dart';
-import 'package:quiz_flutter/components/time.dart';
+import 'package:quiz_flutter/screens/quiz/screen_quiz.dart';
 
 
 void main() => runApp(MyApp());
@@ -33,9 +32,9 @@ class _HomePageState extends State<HomePage> {
           margin: EdgeInsets.only(left: 10, right: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children:  const [
-              TimeScore(),
-              QuestionBody(),
+            children:  [
+
+              QuizScreen(),
             ],
           ),
         ),
