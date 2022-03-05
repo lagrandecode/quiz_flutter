@@ -39,15 +39,14 @@ class _HomePageState extends State<HomePage> {
               Text("00:00", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),),
               SizedBox(height: 30,),
               Container(
-                height: 100,
+                height: 300,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                   color: Colors.grey,
-                    borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10), bottomLeft: Radius.zero,bottomRight: Radius.circular(10))
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10), bottomLeft: Radius.zero,bottomRight: Radius.circular(10),),
+
                 ),
               ),
-
-
             ],
           ),
         ),
