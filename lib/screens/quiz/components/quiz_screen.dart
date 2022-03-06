@@ -14,7 +14,9 @@ class _QuizScreenState extends State<QuizScreen> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-        onWillPop: _onWillPop(),
+        onWillPop: ()async{
+          return false;
+        },
     child: Scaffold(
     body: Column(
     children: [
@@ -25,25 +27,5 @@ class _QuizScreenState extends State<QuizScreen> {
     );
   }
 
-  _onWillPop() async {
-
-      final shouldPop = await showDialog(context: context, builder: (__) =>
-          AlertDialog(
-            title: Text("Alausasabi",),
-            content: Text("Are you sure You want to Exit?",),
-            actions: [
-              TextButton(onPressed: () {
-                Navigator.of(context).pop(context, false);
-              }, child: Text("cancel"),),
-              TextButton(onPressed: () {
-                Navigator.of(context).pop(context, true);
-              }, child: Text("Yes"),),
-            ],
-          ),);
-
-      return shouldPop ?? false;
-
-
-  }
 
 }
