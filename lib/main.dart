@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_flutter/screens/quiz/screen_quiz.dart';
-
 
 void main() => runApp(MyApp());
 
@@ -27,19 +25,11 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          margin: EdgeInsets.only(left: 10, right: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children:  [
+      body: Column(
+        children: [
 
-              QuizScreen(),
-            ],
-          ),
-        ),
-
-      )
+        ],
+      ),
     );
   }
 }
