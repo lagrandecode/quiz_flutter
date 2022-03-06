@@ -26,24 +26,23 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   _onWillPop() async {
-    if(Platform.isAndroid){
+
       final shouldPop = await showDialog(context: context, builder: (__) =>
           AlertDialog(
             title: Text("Alausasabi",),
             content: Text("Are you sure You want to Exit?",),
             actions: [
               TextButton(onPressed: () {
-                Navigator.of(context).pop(false);
+                Navigator.of(context).pop(context, false);
               }, child: Text("cancel"),),
               TextButton(onPressed: () {
-                Navigator.of(context).pop(true);
-              }, child: Text("ok"),),
+                Navigator.of(context).pop(context, true);
+              }, child: Text("Yes"),),
             ],
           ),);
 
       return shouldPop ?? false;
-    }
-    return false;
+
 
   }
 
