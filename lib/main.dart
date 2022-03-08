@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_flutter/screens/quiz/components/quiz_screen.dart';
+import 'package:quiz_flutter/screens/quiz/components/select_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -27,7 +29,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: Column(
         children: [
-
+          SelectScreen(),
         ],
       ),
     );
