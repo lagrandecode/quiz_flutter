@@ -4,15 +4,15 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class QuizScreen extends StatefulWidget {
-  const QuizScreen({Key? key}) : super(key: key);
+class QuizSection extends StatefulWidget {
+  const QuizSection({Key? key}) : super(key: key);
 
   @override
-  _QuizScreenState createState() => _QuizScreenState();
+  _QuizSectionState createState() => _QuizSectionState();
 }
 
 
-class _QuizScreenState extends State<QuizScreen> {
+class _QuizSectionState extends State<QuizSection> {
 
   int timer = 30;
   String timerText = "30";
