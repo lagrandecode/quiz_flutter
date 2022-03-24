@@ -13,7 +13,7 @@ List<QuestionModel> questions = [
     },
   ),
   QuestionModel("When does a cat purr ?", {
-    "When it cares for its kittens szjjkfk;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;/": false,
+    "When it cares for its kittens szjjkfk": false,
     "When it needs confort": false,
     "When it feels content": false,
     "All of the above": true,
