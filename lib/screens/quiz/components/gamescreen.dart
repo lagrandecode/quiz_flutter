@@ -1,17 +1,16 @@
 import 'dart:async';
 import 'dart:math';
 
-
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
+import 'package:quiz_flutter/models/question_model.dart';
 
 import '../../../models/questions.dart';
 import '../../score/quizresult.dart';
 
-
-
 class GameScreen extends StatefulWidget {
-  GameScreen({Key? key}) : super(key: key);
+  GameScreen( {Key? key}) : super(key: key);
+
 
   @override
   _GameScreenState createState() => _GameScreenState();
@@ -24,12 +23,14 @@ class _GameScreenState extends State<GameScreen> {
   PageController? _controller;
   String btnText = "Next Question";
   bool answered = false;
+
   // setting the timer for the quiz
   String _timer = "30";
   int setTimer = 30;
   Timer? timer;
   bool cancelTimer = false;
   ConfettiController? _confettiController;
+  var questionController;
 
   @override
   void initState() {
@@ -42,33 +43,30 @@ class _GameScreenState extends State<GameScreen> {
     genrandomarray();
   }
 
-  void startTimer() async{
+  void startTimer() async {
     const onesec = Duration(seconds: 1);
     timer = Timer.periodic(onesec, (Timer t) {
-      if(mounted){
+      if (mounted) {
         setState(() {
-          if(setTimer == 0){
+          if (setTimer == 0) {
             t.cancel();
             btnPressed = true;
             answered = true;
-          }
-          else if(cancelTimer == true){
+          } else if (cancelTimer == true) {
             t.cancel();
-          }
-          else{
-            setTimer --;
+          } else {
+            setTimer--;
           }
           _timer = setTimer.toString();
         });
       }
     });
-
   }
 
   @override
   void dispose() {
     // TODO: implement dispose
-    if(mounted){
+    if (mounted) {
       timer!.cancel();
     }
 
@@ -76,40 +74,52 @@ class _GameScreenState extends State<GameScreen> {
   }
 
   // for willpopscope
-  Future<bool?> showWarning(BuildContext context) async{
-    return showDialog<bool?>(context: context, builder: (context)=> AlertDialog(
-      title: Text("Exit Quiz"),
-      content: Text("Are You Sure?"),
-      actions: [
-        GestureDetector(
-            onTap: (){
-              Navigator.of(context).pop(true);
-            }, child: Text("Yes",style: TextStyle(color: Colors.red),)),
-        SizedBox(width: 20,),
-        GestureDetector(
-            onTap: (){
-              Navigator.of(context).pop(false);
-            }, child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text("No", style: TextStyle(color: Colors.blue),),
-        )),
-      ],
-    ));
+  Future<bool?> showWarning(BuildContext context) async {
+    return showDialog<bool?>(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: Text("Exit Quiz"),
+              content: Text("Are You Sure?"),
+              actions: [
+                GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pop(true);
+                    },
+                    child: Text(
+                      "Yes",
+                      style: TextStyle(color: Colors.red),
+                    )),
+                SizedBox(
+                  width: 20,
+                ),
+                GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pop(false);
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "No",
+                        style: TextStyle(color: Colors.blue),
+                      ),
+                    )),
+              ],
+            ));
   }
 
 //generating random questions
 
   var random_array;
 
-  genrandomarray(){
+  genrandomarray() {
     var distinctIds = [];
     var rand = new Random();
-    for (int i = 0; ;) {
+    for (int i = 0;;) {
       distinctIds.add(rand.nextInt(10));
       random_array = distinctIds.toSet().toList();
-      if(random_array.length < 10){
+      if (random_array.length < 10) {
         continue;
-      }else{
+      } else {
         break;
       }
     }
@@ -119,7 +129,7 @@ class _GameScreenState extends State<GameScreen> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async{
+      onWillPop: () async {
         final shouldPop = await showWarning(context);
         return shouldPop ?? false;
       },
@@ -132,7 +142,7 @@ class _GameScreenState extends State<GameScreen> {
                 onPageChanged: (page) {
                   if (page == questions.length - 1) {
                     setState(
-                          () {
+                      () {
                         btnText = "See Results";
                       },
                     );
@@ -149,12 +159,22 @@ class _GameScreenState extends State<GameScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox(height: 10,),
+                        SizedBox(
+                          height: 10,
+                        ),
                         SizedBox(
                           width: double.infinity,
-                          child: Text(setTimer == 0 ? "00:00" : "00:$_timer", textAlign: TextAlign.start,style: TextStyle(fontSize: 18, color: setTimer <11 ? Colors.red : null),),
+                          child: Text(
+                            setTimer == 0 ? "00:00" : "00:$_timer",
+                            textAlign: TextAlign.start,
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: setTimer < 11 ? Colors.red : null),
+                          ),
                         ),
-                        SizedBox(height: 10,),
+                        SizedBox(
+                          height: 10,
+                        ),
                         SizedBox(
                           width: double.infinity,
                           child: Text(
@@ -166,7 +186,10 @@ class _GameScreenState extends State<GameScreen> {
                           ),
                         ),
                         Divider(
-                          color: Theme.of(context).brightness == Brightness.light ? Colors.black : Colors.white,
+                          color:
+                              Theme.of(context).brightness == Brightness.light
+                                  ? Colors.black
+                                  : Colors.white,
                         ),
                         SizedBox(
                           height: 10.0,
@@ -181,9 +204,12 @@ class _GameScreenState extends State<GameScreen> {
                             ),
                           ),
                         ),
-                        for (int i = 0; i < questions[index].answers!.length; i++)
+                        for (int i = 0;
+                            i < questions[index].answers!.length;
+                            i++)
                           Container(
-                            padding: EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
+                            padding: EdgeInsets.only(
+                                top: 5, bottom: 5, left: 10, right: 10),
                             width: double.infinity,
                             child: RawMaterialButton(
                               shape: RoundedRectangleBorder(
@@ -195,33 +221,34 @@ class _GameScreenState extends State<GameScreen> {
                               ),
                               fillColor: btnPressed
                                   ? questions[index].answers!.values.toList()[i]
-                                  ? Colors.green
-                                  : Colors.red
+                                      ? Colors.green
+                                      : Colors.red
                                   : Theme.of(context).primaryColor,
                               onPressed: !answered
                                   ? () {
-                                if (questions[index]
-                                    .answers!
-                                    .values
-                                    .toList()[i]) {
-                                  score++;
-                                  _confetti();
-                                  print("yes");
-                                } else {
-                                  print("no");
-                                }
-                                setState(
-                                      () {
-                                    btnPressed = true;
-                                    answered = true;
-                                    cancelTimer = true;
-                                  },
-                                );
-                              }
+                                      if (questions[index]
+                                          .answers!
+                                          .values
+                                          .toList()[i]) {
+                                        score++;
+                                        _confetti();
+                                        print("yes");
+                                      } else {
+                                        print("no");
+                                      }
+                                      setState(
+                                        () {
+                                          btnPressed = true;
+                                          answered = true;
+                                          cancelTimer = true;
+                                        },
+                                      );
+                                    }
                                   : null,
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
-                                child: Text(questions[index].answers!.keys.toList()[i],
+                                child: Text(
+                                    questions[index].answers!.keys.toList()[i],
                                     style: TextStyle(
                                       fontSize: 18.0,
                                     )),
@@ -233,11 +260,13 @@ class _GameScreenState extends State<GameScreen> {
                         ),
                         RawMaterialButton(
                           onPressed: () {
-                            if (_controller!.page?.toInt() == questions.length - 1) {
+                            if (_controller!.page?.toInt() ==
+                                questions.length - 1) {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => QuizResultScreen(score)));
+                                      builder: (context) =>
+                                          QuizResultScreen(score)));
                             } else {
                               _controller!.nextPage(
                                   duration: Duration(milliseconds: 250),
@@ -258,7 +287,9 @@ class _GameScreenState extends State<GameScreen> {
                             btnText,
                           ),
                         ),
-                        SizedBox(height: 20,),
+                        SizedBox(
+                          height: 20,
+                        ),
                       ],
                     ),
                   );
@@ -269,10 +300,12 @@ class _GameScreenState extends State<GameScreen> {
       ),
     );
   }
+
   Widget _confetti() {
     return Align(
       alignment: Alignment.center,
-      child: ConfettiWidget(confettiController: _confettiController!,
+      child: ConfettiWidget(
+        confettiController: _confettiController!,
         colors: [
           Colors.blue,
           Colors.red,
