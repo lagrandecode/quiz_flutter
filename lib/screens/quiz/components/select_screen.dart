@@ -2,23 +2,30 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:quiz_flutter/screens/score/mainresult.dart';
 
 import 'gamescreen.dart';
 
 class SelectScreen extends StatefulWidget {
-  const SelectScreen({Key? key}) : super(key: key);
+  SelectScreen( {Key? key}) : super(key: key);
+
+
+
+
+
 
   @override
   State<SelectScreen> createState() => _SelectScreenState();
 }
 class _SelectScreenState extends State<SelectScreen> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
+            Container (
               height: 180.0,
               width: MediaQuery.of(context).size.width,
               margin: EdgeInsets.only(top: 30, left: 15, right: 15),
@@ -34,6 +41,7 @@ class _SelectScreenState extends State<SelectScreen> {
               //alternative for the lottie
               // child: Lottie.asset("assets/quiz.json",),
             ),
+
           ],
         ),
       ),

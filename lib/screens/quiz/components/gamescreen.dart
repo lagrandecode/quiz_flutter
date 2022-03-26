@@ -23,6 +23,7 @@ class _GameScreenState extends State<GameScreen> {
   PageController? _controller;
   String btnText = "Next Question";
   bool answered = false;
+  int fail = 0;
 
   // setting the timer for the quiz
   String _timer = "30";
@@ -234,6 +235,7 @@ class _GameScreenState extends State<GameScreen> {
                                         _confetti();
                                         print("yes");
                                       } else {
+
                                         print("no");
                                       }
                                       setState(
@@ -266,7 +268,7 @@ class _GameScreenState extends State<GameScreen> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                          QuizResultScreen(score)));
+                                          QuizResultScreen(score,fail)));
                             } else {
                               _controller!.nextPage(
                                   duration: Duration(milliseconds: 250),

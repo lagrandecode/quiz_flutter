@@ -8,8 +8,9 @@ import 'mainresult.dart';
 
 class QuizResultScreen extends StatefulWidget {
 
-  QuizResultScreen(this.score, {Key? key}) : super(key: key);
+  QuizResultScreen(this.fail, this.score, {Key? key}) : super(key: key);
   int? score;
+  int? fail;
 
   @override
   _QuizResultScreenState createState() => _QuizResultScreenState();
@@ -97,6 +98,6 @@ class _QuizResultScreenState extends State<QuizResultScreen> with TickerProvider
         ),
       );
     }
-    return MainResultScreen(widget.score);
+    return MainResultScreen(widget.fail, widget.score,);
   }
 }

@@ -6,11 +6,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:lottie/lottie.dart';
+import 'package:quiz_flutter/screens/quiz/components/select_screen.dart';
+
+import '../quiz/components/quiz_screen.dart';
 
 class MainResultScreen extends StatefulWidget {
   int? score;
+  int? fail;
 
-  MainResultScreen(this.score, {Key? key}) : super(key: key);
+  MainResultScreen(this.fail, this.score, {Key? key}) : super(key: key);
 
 
   @override
@@ -105,6 +109,13 @@ class _MainResultScreenState extends State<MainResultScreen> with TickerProvider
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                  Text( "fail ${widget.fail} Points",
+                    style: TextStyle(
+                      color: averageScore < 50 ? Colors.green : Colors.red,
+                      fontSize: 35,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -135,9 +146,9 @@ class _MainResultScreenState extends State<MainResultScreen> with TickerProvider
                   GestureDetector(
                     onTap: (){
                       // Navigator.of(context).push(MaterialPageRoute(builder: (_)=>QuizSection()));
-                      // Navigator.pushReplacement((context), MaterialPageRoute(builder: (_)=>QuizSection()));
-                      // Navigator.of(context).pop();
-                      Navigator.of(context).popUntil((route) => route.isFirst);
+                      // Navigator.pushReplacement((context), MaterialPageRoute(builder: (_)=>SelectScreen(widget.score!, widget.fail!)));
+                      Navigator.of(context).pop();
+                      // Navigator.of(context).popUntil((route) => route.isFirst);
                     },
                     child: Container(
                       height: 40,
