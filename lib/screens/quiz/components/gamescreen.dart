@@ -192,7 +192,7 @@ class _GameScreenState extends State<GameScreen> {
                                   ? Colors.black
                                   : Colors.white,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10.0,
                         ),
                         SizedBox(
