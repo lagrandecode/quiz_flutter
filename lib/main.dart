@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz_flutter/screens/quiz/components/quiz_screen.dart';
 import 'package:quiz_flutter/screens/quiz/components/select_screen.dart';
@@ -29,9 +30,30 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SelectScreen(),
+    return const Scaffold(
+      body: FirstScreen(),
     );
   }
 }
+
+class FirstScreen extends StatelessWidget {
+  const FirstScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.yellow,
+      body: Container(
+        child: Center(
+          child: TextButton(
+            onPressed: (){
+              Navigator.of(context).push(CupertinoPageRoute(builder: (_)=>SelectScreen()));
+            }, child: Text("move", style: TextStyle(fontSize: 30),),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 

@@ -22,6 +22,11 @@ class _SelectScreenState extends State<SelectScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+
+        ],
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
