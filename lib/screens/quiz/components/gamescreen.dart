@@ -86,18 +86,18 @@ class _GameScreenState extends State<GameScreen> {
                     onTap: () {
                       Navigator.of(context).pop(true);
                     },
-                    child: Text(
+                    child: const Text(
                       "Yes",
                       style: TextStyle(color: Colors.red),
                     )),
-                SizedBox(
+                const SizedBox(
                   width: 20,
                 ),
                 GestureDetector(
                     onTap: () {
                       Navigator.of(context).pop(false);
                     },
-                    child: Padding(
+                    child: const Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         "No",

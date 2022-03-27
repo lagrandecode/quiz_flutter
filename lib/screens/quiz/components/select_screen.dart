@@ -35,8 +35,8 @@ class _SelectScreenState extends State<SelectScreen> {
               width: MediaQuery.of(context).size.width,
               margin: EdgeInsets.only(top: 30, left: 15, right: 15),
               decoration: BoxDecoration(
-                color: Theme.of(context).brightness == Brightness.light? Colors.grey.withOpacity(0.3): Color(0x222222FF),
-                borderRadius: BorderRadius.only(topRight: Radius.circular(10), topLeft: Radius.circular(10), bottomRight: Radius.circular(10), bottomLeft: Radius.zero),
+                color: Theme.of(context).brightness == Brightness.light? Colors.grey.withOpacity(0.3): const Color(0x222222FF),
+                borderRadius: const BorderRadius.only(topRight: Radius.circular(10), topLeft: Radius.circular(10), bottomRight: Radius.circular(10), bottomLeft: Radius.zero),
               ),
               child: InkWell(
                 onTap: (){
@@ -46,6 +46,7 @@ class _SelectScreenState extends State<SelectScreen> {
               //alternative for the lottie
               // child: Lottie.asset("assets/quiz.json",),
             ),
+            const Text("score: 0", style: TextStyle(fontSize: 30),)
 
           ],
         ),
