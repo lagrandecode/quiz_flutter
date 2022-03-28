@@ -46,7 +46,7 @@ class _SelectScreenState extends State<SelectScreen> {
               //alternative for the lottie
               // child: Lottie.asset("assets/quiz.json",),
             ),
-            const Text("score: 0", style: TextStyle(fontSize: 30),)
+            const Text("score: 0", style: TextStyle(fontSize: 30),),
             // i need to get the score here and also save the score using get preferences
 
           ],
