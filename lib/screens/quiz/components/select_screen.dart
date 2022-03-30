@@ -48,7 +48,6 @@ class _SelectScreenState extends State<SelectScreen> {
             ),
             const Text("score: 0", style: TextStyle(fontSize: 30),),
             // i need to get the score here and also save the score using get preferences
-
           ],
         ),
       ),
